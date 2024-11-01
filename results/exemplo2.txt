@@ -1,0 +1,42 @@
+#####################################################################################################################%#
+################################################## SYSTEM PARAMETERS ##################################################
+#######################################################################################################################
+
+# Camera Information
+fov = 90                            # field of view (deg)
+width = 1280                        # camera image width (px)
+height = 720                        # camera image height (px)
+dist_camera_to_conveyor = 50        # distance from camera to conveyor belt (cm)
+
+# Object Dimensions
+object_width = [4, 8, 10]         # object width (cm)
+object_height = 25                # object height (cm)
+
+# System Information
+conveyor_speed = 4                 # conveyor speed (cm/s)
+objects_per_column = 2              # quantity of objects in each column
+h_dist_between_objects = 4          # horizontal distance between objects (cm)
+object_name = 'rasgo'              # object image name (image must be in folder /images/object/)
+object_name2 = 'mancha'             # object image name (image must be in folder /images/object/)
+object_name3 = 'mancha2'             # object image name (image must be in folder /images/object/)
+object_name4 = 'mancha3'             # object image name (image must be in folder /images/object/)
+object_name6 = 'furo'             # object image name (image must be in folder /images/object/)
+object_name7 = 'transparente'             # object image name (image must be in folder /images/object/)
+background_name = 'tecido'             # background image name (image must be in folder /images/background/)
+
+# Video output feature
+fps = 30                            # frames per second
+video_duration = 90                # video duration (s)
+
+# Noise Management
+# brightness = 0
+noise_type = ''                     # gaussian, poisson, salt, pepper, s&p, speckle or empty string for no noise
+noise_object_position = 0.3         # x: evenly distributed random value in the range [-x cm, x cm]
+noise_object_size = 0.1             # x: evenly distributed random value in the range [-x cm, x cm]
+norm_params = np.array([[-20, 9], [0, 4], [20, 9]])   # noise parameters for rotation
+norm_weights = [1.0/16.0, 14.0/16.0, 1.0/16.0]        # noise parameters for rotation
+flip_probability = [1/80, 1/80, 1/80, 1/80, 1/80, 1/80, 1/80, 1/80, 1/80, 1/80, 1/80, 1/80, 1/80, 1/80, 1/80, 1/80, 1/80, 1/80, 1/80, 1/80, 60/80]               # probability of the object image being inverted
+
+#######################################################################################################################
+#######################################################################################################################
+#####################################################################################################################%#
