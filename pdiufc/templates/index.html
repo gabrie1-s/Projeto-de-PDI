@@ -1,0 +1,316 @@
+<html lang="en"><head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/1176/1176990.png">
+
+    <title>Jeans Tracker</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="{{ url_for('static', filename='css/bootstrap.min.css') }}" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet">
+</head>
+
+<style>
+    .bg-black{
+        background-color: #292929 !important;
+    }
+
+    body {
+        font-family: 'San Francisco', 'Times New Roman';
+    }
+    .card{
+        font-family: 'San Francisco', 'Times New Roman';
+    }
+</style>    
+
+<body>
+    <header>
+        <div class="navbar navbar-dark bg-black box-shadow">
+            <div class="container-fluid d-flex justify-content-center">
+                <a href="#" class="navbar-brand d-flex align-items-center justify-content-center">
+                    <img src="https://cdn-icons-png.flaticon.com/512/1176/1176990.png" width="50px">
+                    <strong style="margin-left: 20px">Sistema para Detecção de Defeitos na Fabricação de Tecido Jeans</strong>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <main role="main">
+        <div style="background-image: url(../static/img/background-jeans.jpg); background-repeat: no-repeat; background-size: cover;"
+                class="album py-5 bg-black" >
+            <div class="container-fluid">
+                <div class="row" id="items_container">
+                    <div class="col-xl-9 col-lg-12 col-md-12 col-sm-12 col-xs-12 mb-4">
+                        <div class="card box-shadow">
+                            <img src="{{ url_for('video_feed') }}" style="width: 100%; height: auto;">
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-lg-12 col-md-12 col-sm-12 col-xs-12 mb-4">
+                        <div class="h-100">
+                            <div class="h-100 card box-shadow bg-black">
+                                <div>
+                                    <strong class="text-white">Parâmetros do sistema</strong>
+                                </div>
+                                <hr class="bg-white" style="margin: 8px 0 30px 0">
+                                <form action="#" onsubmit="iniciar();return false;">
+                                    <fieldset id="fieldset">
+                                        <div class="form-row">
+                                            <div class="form-group col-xl-12 col-md-6">
+                                                <div class="input-group input-group-sm">
+                                                    <div class="input-group-prepend">
+                                                        <span class="input-group-text" id="video_input2">Fonte</span>
+                                                    </div>
+                                                    <select class="form-control video_input" id="video_input">
+                                                        <option>Câmera real</option>
+                                                        <option>Simulação 1</option>
+                                                        <option>Simulação 2</option>
+                                                        <option>Simulação 3</option>
+                                                        <option>Simulação 4</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <hr class="bg-white" style="margin: 2px 0 15px 0">
+                                        <strong class="text-white" style="font-size: 13px  ;">Informações da câmera</strong>
+                                        <div class="form-row" style="margin-top: 10px;">
+                                            <div class="form-group col-md-6">
+                                                <div class="input-group input-group-sm">
+                                                    <div class="input-group-prepend">
+                                                        <span class="input-group-text" id="fov2">FOV</span>
+                                                    </div>
+                                                    <input value="90" type="text" class="form-control" id="fov" placeholder="field of view" required disabled>
+                                                </div>
+                                            </div>
+                                            <div class="form-group col-md-6">
+                                                <div class="input-group input-group-sm">
+                                                    <div class="input-group-prepend">
+                                                        <span class="input-group-text" id="fps2">FPS</span>
+                                                    </div>
+                                                    <input value="30" type="text" class="form-control" id="fps" placeholder="frames per second" required disabled>
+                                                </div>
+                                            </div>
+                                            <div class="form-group col-md-12">
+                                                <div class="input-group input-group-sm">
+                                                    <div class="input-group-prepend">
+                                                        <span class="input-group-text" id="dist2">Distância câmera</span>
+                                                    </div>
+                                                    <input value="1" type="text" class="form-control" id="dist" placeholder="distância (cm)" required disabled>
+                                                </div>
+                                            </div>
+                                            <div class="form-group col-md-12">
+                                                <div class="input-group input-group-sm">
+                                                    <div class="input-group-prepend">
+                                                        <span class="input-group-text" id="resol">Resolução</span>
+                                                    </div>
+                                                    <input value="1280" type="text" class="form-control" id="resol_w" placeholder="width (px)" required disabled>
+                                                    <input value="720" type="text" class="form-control" id="resol_h" placeholder="height (px)" required disabled>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <hr class="bg-white" style="margin: 2px 0 15px 0">
+
+
+                                        <!--
+                                        <strong class="text-white" style="font-size: 13px;">Informações do objeto</strong>
+                                        <div class="form-row" style="margin-top: 10px;">
+                                            <div class="form-group col-md-12">
+                                                <div class="input-group input-group-sm">
+                                                    <div class="input-group-prepend">
+                                                        <span class="input-group-text" id="tam">Tamanho</span>
+                                                    </div>
+                                                    <input type="text" class="form-control" id="tam_w" placeholder="width (cm)" required>
+                                                    <input type="text" class="form-control" id="tam_h" placeholder="height (cm)" required>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <hr class="bg-white" style="margin: 2px 0 15px 0"> -->
+
+
+                                        <strong class="text-white" style="font-size: 13px;">Luminosidade</strong>
+                                        <div class="form-row" style="margin-top: 10px;">
+                                            <div class="slider w-100">
+                                                <input id="slider" type="range" min="0" max="100" value="50" style="width:80%"/>
+                                                <p id="selector" class="d-inline-flex text-white ml-2">50%</p>
+                                            </div>
+                                        </div>
+                                        <hr class="bg-white" style="margin: 2px 0 15px 0">
+
+                                    </fieldset>
+                                    <button type="submit" id="btn_iniciar" style="width: 100%;" class="btn btn-success">Iniciar</button>
+                                    <button type="button" onclick="parar()" id="btn_parar" style="width: 100%;" class="btn btn-danger">Parar</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row mx-4 mt-4">
+                <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12 mb-4">
+                    <div class="card box-shadow bg-black">
+                        <div class="d-flex justify-content-around">
+                            <div class="website-infos">
+                                <p id="noise-type-text" class="text-white">Sem ruído</p>
+                            </div>
+                            <div class="website-infos-img">
+                                <img src="../static/img/noise.png" style="width: 50px; height: auto; margin-top: 5px;">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12 mb-4">
+                    <div class="card box-shadow bg-black">
+                        <div class="d-flex justify-content-around">
+                            <div class="website-infos">
+                                <h2><span class="counter velocity text-white">4 cm/s</span></h2>
+                                <p class="text-white">Velocidade</p>
+                            </div>
+                            <div class="website-infos-img">
+                                <img src="../static/img/velocity.png" style="width: 50px; height: auto; margin-top: 2px;">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/jquery-3.4.1.min.js') }}"></script>
+    <script type="text/javascript">
+        
+        let noise_type = []
+        
+        $("#slider").on('change', function() {
+            let val = $(this).val();
+            val = parseInt(val);
+            $("#selector").html(val + '%');
+
+            if ( $("#btn_parar").is(':visible') ){
+                iniciar()
+            }
+            
+        });
+
+
+        $("#video_input").on('change', function() {
+            let video_selected = $('#video_input').val()
+
+            console.log(noise_type)
+
+            noise_selected = noise_type[video_selected + '.txt']
+
+            if(noise_selected == "gaussian")
+            {
+                $('#noise-type-text').html(
+                    "Gaussiano <br> Média: 0 <br> Desvio Padrão: 0.1"
+                )
+            }
+
+            else if (noise_selected == "salt"){
+                $('#noise-type-text').html(
+                    "Salt <br> Proporção de pixels: 0.05"
+                )
+            }
+
+            else if (noise_selected == "pepper"){
+                $('#noise-type-text').html(
+                    "Pepper <br> Proporção de pixels: 0.05"
+                )
+            }
+
+            else if (noise_selected == "s&p"){
+                $('#noise-type-text').html(
+                    "S&P <br> Proporção de pixels: 0.05"
+                )
+            }
+
+            else if (noise_selected == "speckle"){
+                $('#noise-type-text').html(
+                    "Speckle <br> Média: 0 <br> Variância: 0.01"
+                )
+            }
+
+            else{
+                $('#noise-type-text').html(
+                    "Sem ruído"
+                )
+            }
+
+        });
+
+        var velocity = document.querySelector('.velocity'),
+            video_inputs = document.querySelector('.video_input'),
+            websocket = new WebSocket("ws://{{serverIP}}:6789/");
+
+        websocket.onmessage = function (event) {
+            data = JSON.parse(event.data);
+            switch (data.type) {
+                case 'state':
+                    velocity.textContent = data.velocity + " cm/s";
+
+                    var displayOptions = "";
+                    
+                    data.input_video.forEach(src => {
+                        displayOptions += "<option>" + src + "</option>";
+                    });
+                    video_inputs.innerHTML = displayOptions;
+
+                    if (data.video_src) {
+                        video_inputs.selectedIndex = data.input_video.indexOf(data.video_src);
+                    }
+
+                    //document.getElementById("fieldset").disabled = data.active;
+
+                    if(data.active) {
+                        document.getElementById("btn_iniciar").style.display = "none";
+                        document.getElementById("btn_parar").style.display = "block";
+                    } else {
+                        document.getElementById("btn_iniciar").style.display = "block";
+                        document.getElementById("btn_parar").style.display = "none";
+                    }
+
+                    if (noise_type.length == 0){
+                        noise_type = data.noise_type;
+                    }
+
+                    break;
+                default:
+                    console.error("unsupported event", data);
+            }
+        };
+
+        var fonte = document.getElementById("video_input")
+        var fov = document.getElementById("fov")
+        var fps = document.getElementById("fps")
+        var dist = document.getElementById("dist")
+        var res_w = document.getElementById("resol_w")
+        var res_h = document.getElementById("resol_h")
+        var lum =  document.getElementById("slider")
+
+        function iniciar() {
+
+            obj = {
+                active: true,
+                fonte: fonte.value,
+                fov: fov.value,
+                fps: fps.value,
+                dist: dist.value,
+                res_w: res_w.value,
+                res_h: res_h.value,
+                lum: lum.value,
+            }
+            websocket.send(JSON.stringify(obj));
+            return false;
+        }
+
+        function parar() {
+            websocket.send(JSON.stringify({active: false}));
+            return false;
+        }
+    </script>
+
+</body></html>
