@@ -15,7 +15,7 @@ from flask import render_template
 
 logging.basicConfig()
 
-serverIP = socket.gethostbyname(socket.gethostname())
+serverIP = socket.gethostbyname("localhost")
 lock = threading.Lock()
 lock_state = threading.Lock()
 app = Flask(__name__)

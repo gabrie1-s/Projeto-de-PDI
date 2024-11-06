@@ -199,8 +199,6 @@
         $("#video_input").on('change', function() {
             let video_selected = $('#video_input').val()
 
-            console.log(noise_type)
-
             noise_selected = noise_type[video_selected + '.txt']
 
             if(noise_selected == "gaussian")
