@@ -11,6 +11,7 @@ Instale as dependências
 pip install -r requirements.txt
 ```
 Para gerar um novo vídeo, edite as informações no arquivo `pdiufc/video_generator.py`. 
+Assim, você pode mudar as falhas e ruídos que aparecem no vídeo, bem como a maneira como eles aparecem.
 Em seguida, execute
 ```bash
 cd pdiufc
