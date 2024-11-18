@@ -28,14 +28,14 @@ Por fim, no seu navegador, acesse `localhost:5000`.
 1. **Correção de Brilho:** Cria uma tabela de mapeamento que ajusta o brilho da imagem com uma função exponencial (a potência de 0.2). Isso torna a imagem mais clara;
 2. **Conversão para Escala de Cinza:** Converte a imagem ajustada para tons de cinza;
 3. **Suavização:** Aplica um filtro gaussiano para suavizar a imagem e reduzir o ruído;
-4. **Detecção de Bordas com Laplaciano:** Aplica um filtro Laplaciano, que realça as bordas da imagem;
+4. **Detecção de Bordas com Filtro Laplaciano:** Aplica um filtro Laplaciano, que realça as bordas da imagem;
 5. **Equalização de Histograma:** Realça o contraste da imagem, distribuindo melhor os níveis de brilho;
-6. **Suavização com Filtro de Média:** Aplica outro filtro para suavizar novamente a imagem;
+6. **Suavização com Filtro de Média:** Aplica filtro de média para suavizar novamente a imagem;
 7. **Limiarização Binária:** Converte a imagem para uma máscara binária, onde os pixels acima de 120 ficam pretos e os demais ficam brancos;
-8. **Abertura (Morfologia Matemática):** Realiza a operação de "opening" (dilatação seguida de erosão) para remover ruídos e destacar áreas maiores.
+8. **Abertura (Morfologia Matemática):** Realiza a operação de "opening" (dilatação seguida de erosão) para remover ruídos.
 
 ### Processamento
-1. **Suavização:** Aplica um filtro de média com uma janela maior (13x13), reduzindo ruídos de forma significativa;
+1. **Suavização:** Aplica um filtro de média com uma kernel grande (13x13), reduzindo ruídos de forma significativa;
 2. **Limiarização Binária:** Converte a imagem para binária, mantendo apenas valores acima de 20 em branco e o restante em preto;
 3. **Detecção de Bordas com Canny:** Detecta as bordas na imagem binarizada;
 4. **Detecção de Contornos:** Encontra contornos nas bordas detectadas;
